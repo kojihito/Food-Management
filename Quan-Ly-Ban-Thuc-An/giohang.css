@@ -1,0 +1,169 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 10px;
+}
+
+.cart_container{
+    display: flex; flex-wrap: wrap; background-color: white;
+    width: 100%;
+}
+.table-container {
+    max-height: 400px; /* Chiều cao cố định */
+    overflow-y: auto; /* Bật thanh cuộn dọc */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+thead {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+th {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #cccccc;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #555;
+}
+
+button.edit {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+button.edit:hover {
+    background-color: #0056b3;
+}
+
+button.delete {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button.delete:hover {
+    background-color: #cc0000;
+}
+
+.container_btn button {
+    background-color: #555;
+    color: white;
+    border-radius: 20px;
+    min-width: 30px;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+}
+
+.container_btn button:hover {
+    background-color: #333;
+}
+
+.checkout {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.checkout:hover {
+    background-color: #388e3c;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        flex-direction: column; /* Chuyển hướng thành cột */
+        align-items: stretch; /* Các phần tử sẽ dàn đều theo chiều ngang */
+        padding: 5px;
+    }
+
+    .table-container {
+        width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng */
+    }
+
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px; /* Giảm padding để hiển thị tốt hơn */
+        font-size: 14px; /* Giảm kích thước chữ */
+    }
+
+    button.edit, button.delete {
+        font-size: 12px; /* Điều chỉnh kích thước nút */
+    }
+
+    .checkout {
+        width: 100%; /* Nút thanh toán chiếm toàn bộ chiều rộng */
+        font-size: 16px;
+    }
+}
+
+

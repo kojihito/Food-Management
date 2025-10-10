@@ -1,0 +1,124 @@
+/* <<<--- ADMIN SIDEBAR NAVIGATION */
+
+.admin-navbar{
+    display: none;
+    position:fixed;
+    background-color: #262626;
+    transition: all 0.2s ease;
+    z-index: 101;
+}
+.admin-navbar-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+/* .admin-navbar-item:last-child {
+    margin-top: auto;
+} */
+ 
+.admin-navbar-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: wheat;
+    text-decoration: none;
+    transition: all 0.1s ease;
+}
+.admin-navbar-link:hover{
+    filter: grayscale(0%) opacity(1);
+    background-color: tomato;
+    border-radius: 5rem 5rem 0 5rem;
+    color: white;
+    margin: 0 1rem 0 1rem;
+}
+.admin-navbar .link-text{
+    color: white;
+    display: none;
+}
+.admin-navbar-item{
+    width: 100%;
+}
+.admin-navbar svg{
+    fill: white;
+    width: 2rem;
+    margin: 0 1.5rem;
+}
+
+
+.admin-navbar .logo{
+ font-weight: bold;   
+ text-transform: uppercase;
+ margin-bottom: 1rem;
+ text-align: center;
+ color: #676767;
+ background:#000000;
+ font-size: 1.5rem;
+ letter-spacing: 0.3ch;
+ width: 100%;
+}
+.admin-navbar .logo a{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: wheat;
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7); 
+    transition: all 0.1s ease;
+}
+.admin-navbar .logo svg{
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+.admin-navbar:hover .logo svg{
+    transform: rotate(-180deg);
+}
+main{
+    position: relative;
+    /* margin-left: 5rem; */
+}
+
+/* small screens */
+@media only screen and (max-width: 600px){
+.admin-navbar{
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+}
+.admin-navbar .logo{
+    display: none;
+}
+.admin-navbar-nav{
+    flex-direction: row;
+}
+.admin-navbar-link{
+    justify-content: center;
+}
+main{
+    margin: 0;
+}
+}
+
+/* large screens */
+@media only screen and (min-width: 600px){
+.admin-navbar{
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+}
+.admin-navbar:hover{
+    width: 16rem;
+}
+.admin-navbar:hover .link-text{
+    display: inline;
+    transition: all 0.2s ease;
+}
+}
+
+/* ADMIN SIDEBAR NAVIGATION --->>> */
+

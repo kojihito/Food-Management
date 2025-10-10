@@ -1,0 +1,110 @@
+.adminOrderPage{
+    padding: clamp(2rem,5vw,5rem);
+}
+.adminOrderBoard{
+    margin-top: 4rem;
+}
+.adminOrderPage .section{
+    display: grid;
+    /* overflow: hidden; */
+    align-items: center;
+    align-content: center;
+    grid-template-columns: 0.3fr 1.2fr 1fr 0.8fr 0.5fr ;
+    height: 100px;
+    background-color: lightgrey;
+    border: solid 1px grey;
+    border-top: 0;
+    padding: 10px;
+}
+.adminOrderPage .section:first-child{
+    border: solid 1px grey;
+    
+    background-color: white;
+}
+.adminOrderPage .top-section{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.adminOrderBoard .user {
+    display: flex;
+}
+.adminOrderBoard .user img{
+    height: 60px
+}
+.adminOrderBoard .user div{
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
+.adminOrderBoard .foods img{
+    height:50px
+}
+.adminOrderBoard .status p{
+    border-radius: 100px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500px;
+    padding: px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    padding: 3px 0;
+}
+.adminOrderBoard .status .processing{
+background-color: gray;
+}
+.adminOrderBoard .status .cooking{
+background-color: darkorange;
+}
+.adminOrderBoard .status .delivering{
+background-color: darkgreen;
+}
+.adminOrderBoard .more svg{
+    width: 30px;
+    fill: grey;
+}
+.adminOrderBoard .more{
+position: relative;}
+.adminOrderBoard .more .options{
+background-color: white;
+font-weight: 500;
+width: 100px;
+font-size:small;
+box-shadow: 0 0 5px gray;
+position: absolute;
+top: -20px;
+right: 20px;
+}
+.adminOrderBoard .more .options p{
+padding: 3px 10px;
+border-bottom: solid 1px gray;
+}
+.adminOrderBoard .more .options p:hover{
+background-color: grey;
+color: white;
+}
+.adminOrderBoard .more svg:hover{
+    fill: black;
+}
+
+.adminOrderBoard .remove {
+    display: flex;
+    cursor: pointer;
+    font-size: medium;
+    font-weight: 600;
+    color: gray;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+
+
+.adminOrderBoard svg {
+    width:20%;
+    min-width: 10px;
+    fill: grey;
+}

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="vn">
+  <head>
+    <title>Eatout</title>
+    <link rel="icon" type="image/svg+xml" href="./images/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./adminDashboard.css" />
+    <link rel="stylesheet" href="./adminAnalytics.css" />
+    <link rel="stylesheet" href="./adminUserManagement.css" />
+    <link rel="stylesheet" href="./adminProductManagement.css" />
+    <link rel="stylesheet" href="./signCode.css" />
+    <link rel="stylesheet" href="./adminOrderManager.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+
+    <div class="popup-box">
+      <div class="signup-form">
+        <img src="./images/close-button-png-27.png" class="close-form">
+        <form class="form-container" id="signup_form">
+            <h1 align="center" style="color: black;">ĐĂNG KÝ</h1>
+            <label class="form-label" for="signup_email">Email: </label>
+            <input class="form-input" id="signup_email" type="email" placeholder="Enter your email" name="email" required autocomplete="off">
+            <br>
+            <label class="form-label" for="fname">Tên: </label>
+            <input class="form-input" id="fname" type="text" placeholder="Enter your name" name="fname" required>
+            <br>
+            <label class="form-label" for="signup_pws">Mật khẩu: </label>
+            <input class="form-input" id="signup_pws" type="password" placeholder="Enter your password" name="password" required>
+            <br>
+            <label class="form-label" for="re_pws">Nhập lại mật khẩu: </label>
+            <input class="form-input" id="re_pws" type="password" placeholder="Reenter your password above" name="confirm_password" required>
+            <br>
+            <button class="btn-submit" id="signup_btn" type="submit">Đăng Ký</button>
+            <br>
+            <p style="padding: 10px;">Đã có tài khoản? <u style="color: blue; cursor: pointer" class="login-txt">Nhấn đây</u></p>
+        </form>
+      </div>
+      <div class="login-form">
+        <img src="./images/close-button-png-27.png" class="close-form" onclick="
+          document.querySelector('.login-form #signin_email').value = '';
+          document.querySelector('.login-form #signin_pws').value = '';
+          document.getElementsByName('email')[0].value = '';
+          document.getElementsByName('fname')[0].value = '';
+          document.getElementsByName('password')[0].value = '';
+          document.getElementsByName('confirm_password')[0].value = '';
+          document.querySelector('.signup-form').style.display = 'none';
+          document.querySelector('.login-form').style.display = 'flex';
+          document.querySelector('.popup-box').style.display = 'none'
+          ">
+        <form class="form-container" id="signin_form">
+          <h1 align="center" style="color: black;">ĐĂNG NHẬP</h1>
+          <label class="form-label" for="signin_email">Email: </label>
+          <input class="form-input" id="signin_email" type="email" placeholder="Enter your email" name="email" required autocomplete="off">
+          <br>
+          <label class="form-label" for="signin_pws">Mật khẩu: </label>
+          <input class="form-input" id="signin_pws" type="password" placeholder="Enter your password" name="password" required>
+          <br>
+          <button class="btn-submit" id="signin_btn" type="submit">Đăng Nhập</button>
+          <br>
+          <p style="padding: 10px;">Chưa có tài khoản? <u style="color: blue; cursor: pointer;" class="signup-txt">Nhấn đây</u></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="pop-up-update">
+      <div class="update-info">
+        <form class="form-container">
+          <div style="display: flex; justify-content: center;">
+            <img class="user-avt" style="width: 30%; cursor: pointer; border: 2px solid;" src="images/user pic.jpg" title="Upload Image">
+            <input class="form-input" id="upload-avt" type="file" name="user-avt" style="display: none;">
+          </div>
+          <label class="form-label" for="updateName">Tên: </label>
+          <input class="form-input" id="updateName" type="text"  name="uname" required>
+          <label class="form-label" for="updateAddress">Địa Chỉ:</label>
+          <input class="form-input" id="updateAddress" type="text" name="uaddress" autocomplete="address-level3">
+          <label class="form-label" for="currentPwd">Mật khẩu:</label>
+          <div class="change-password">
+            <input class="form-input" id="currentPwd" type="password" name="currentPwd" disabled>
+            <button class="changePwd-btn" type="button">Đổi mật khẩu</button>
+          </div>
+          <div class="yn_btn">
+            <button class="sav_btn" type="submit">Lưu</button>
+            <button class="deny_btn" type="button">Hủy</button>
+          </div>
+        </form>
+      </div>
+      <div class="update-password">
+        <form class="form-container">
+          <h1 align="center" style="color: black; margin-bottom: 30px;">ĐỔI MẬT KHẨU</h1>
+          <label class="form-label" for="oldPwd">Nhập mật khẩu cũ:</label>
+          <input class="form-input" id="oldPwd" type="password"  name="oldPwd" required>
+          <label class="form-label" for="newPwd">Nhập mật khẩu mới:</label>
+          <input class="form-input" id="newPwd" type="password"  name="newPwd" required>
+          <label class="form-label" for="renewPwd">Nhập lại mật khẩu mới:</label>
+          <input class="form-input" id="renewPwd" type="password" name="renewPwd" required>
+          <div class="yn_btn">
+            <button class="sav_btn" type="submit">Xác Nhận</button>
+            <button class="deny_btn" type="button">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="pop-up-address">
+      <div class="addAddress">
+        <h1 style="margin: 5px;">THÊM ĐỊA CHỈ</h1>
+        <form class="form-container">
+          <!-- <label class="form-label" for="addedAddress">Địa chỉ:</label> -->
+          <input class="form-input" id="addAddress" type="text" name="addedAddress" autocomplete="address-level3">
+          <div class="yn_btn">
+            <button class="cfm_btn" type="submit">Xác Nhận</button>
+            <button class="deny_btn" type="button">Hủy</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <main page="home" class="page">
+      <div style="position: sticky; background-color: white; top: 0; z-index: 99;">
+        <nav class="navbar" id="navbar">
+          <img src="./images/logo.png" class="logo" alt="" />
+          
+          <ul class="navbar-menu">
+            <a href="#explore-menu">Thực đơn</a>
+            <a href="#footer">Liên hệ</a>
+          </ul>
+  
+          <div class="navbar-right">
+            <div class="search-container">
+              <input type="text" class="search-input" placeholder="Tìm kiếm...">
+              <img src="./images/search.png" class="icon" alt="" />
+            </div>
+            <div class="cart-icon">
+              <img src="./images/shopping-cart.png" class="icon" alt="" />
+              <div class="dot"></div>
+            </div>
+            <button class="login-btn" id="login-button">Đăng ký / Đăng nhập</button>
+          </div>
+          <img class="profile-icon" style="width: 35px;" src="images/user pic.jpg" alt="user profile picture">
+          <div class="sub-menu-wrap">
+            <div class="sub-menu">
+              <div class="user-info">
+                <img class="user-mini-avt" style="width: 100px; border-right: 2px solid;" src="images/user pic.jpg">
+                <p style="margin-left: 15px; font-size: 20px; color: coral; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">User Name</p>
+              </div>
+              <div class="sub-menu-ops" id="updateUserInfo-btn">
+                <p>Chỉnh sửa</p>
+              </div>
+              <div class="sub-menu-ops" id="addAddress-btn">
+                <p>Thêm địa chỉ</p>
+              </div>
+              <div class="sub-menu-ops" id="orderHistory-btn">
+                <p>Lịch sử mua</p>
+              </div>
+              <div class="sub-menu-ops" id="logout-btn">
+                <p>Đăng xuất</p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+        
+
+      <div class="header">
+        <div class="header-contents">
+          <h2>Order your favourite food here</h2>
+          <p>choose from a diverse menu</p>
+          <button style="cursor: pointer;">
+            <a href="#explore-menu">Xem thực đơn</a>
+          </button>
+        </div>
+      </div>
+      <div class="explore-menu" id="explore-menu">
+        <h1>Explore our menu</h1>
+        <p class="explore-menu-text">Choose from our diverse menu</p>
+        <div class="explore-menu-list">
+          <!-- explore-menu-list items is display in index.js -->
+        </div>
+        <div class="price-range">
+          <div class="price-input">
+            <div class="field">
+              <span>Min</span>
+              <input type="number" name="" class="input-min" value="0">
+  
+            </div>
+            <div class="separator">-</div>
+            <div class="field"><span>Max</span>
+            <input type="number" value="100000" class="input-max">
+            </div>
+          </div>
+            
+          </div>
+        <hr />
+      </div>
+
+      </div>
+
+      <div class="food-display" id="food-display">
+        <h2>Top dishes near you</h2>
+        <div class="food-display-list">
+          <!-- food items is display in index.js -->
+        </div>
+        <div class="pagination">
+          <i class="fa-solid fa-caret-left back"></i>
+          <span id="currentPage" style="color: tomato;">1</span>
+          <span>/</span>
+          <span id="pageNumber">3</span>
+          <i class="fa-solid fa-caret-right next"></i>
+        </div>
+      </div>
+      <footer class="footer" id="footer">
+        <div class="footer-content">
+          <div class="footer-content-left">
+            <img src="./images/logo.png" alt="" />
+            <p>
+              Enim culpa et sint irure eiusmod elit culpa elit id velit
+              cupidatat. Nulla officia enim non precat velit. Ullamco commodo ea
+              velit nostrud laboris minim magna enim sint anim aute.
+            </p>
+            <div class="footer-social-icons">
+              <img src="" alt="" /><img src="" alt="" /><img src="" alt="" />
+            </div>
+          </div>
+
+          <div class="footer-content-center">
+            <h2>Company</h2>
+            <ul>
+              <li>Trang chủ</li>
+              <li>Liên hệ</li>
+              <li>Thực đơn</li>
+              <li>Privacy Policy</li>
+            </ul>
+          </div>
+
+          <div class="footer-content-right">
+            <h2>Get in Touch</h2>
+            <ul>
+              <li>+84-234-236-9457</li>
+              <li>contact@tomato.com</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <p class="footer-copyright">
+          Copyright 2024 Eatout.com - All Right Reserved.
+        </p>
+      </footer>
+    </main>
+
+    <main page="ThanhToan" class="page check_sp">
+      <form>
+        <div>
+          <div >
+            <i class="fa-solid fa-backward back_home pageButtonLink" page="home" style="color: #74C0FC;"></i>
+          </div>
+            <div class="page-title">
+                <h2>THANH TOÁN</h2>
+            </div>
+            <div style="padding: 23px;">
+                <div class="row">
+                    <div class="box-checkout">
+                        <h3 class="box-title">
+                            GHI CHÚ THÊM
+                        </h3>
+                        <div class="box-content" style="padding: 20px 67px;">
+                            <label for="accress-order">Địa chỉ</label>
+                            <span id="error" class="error"></span>
+                            <input type="text" name="accress_order" id="accress_order"
+                                placeholder="Vui lòng nhập dịa chỉ" class="input-text">
+
+                            <label>Ghi chú</label>
+                            <div class="input-box">
+                                <textarea name="order_comment" id="ghi_chu_deal" placeholder="Vui lòng nhập ghi chú"
+                                    class="input-text"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-checkout">
+                        <h3 class="box-title">
+                            XEM LẠI ĐƠN HÀNG
+                        </h3>
+                        <div class="box-content" style="padding: 0;">
+                            <table class="data-table" id="">
+                                <colgroup>
+                                    <col>
+                                    <col width="1">
+                                    <col width="1">
+                                    <col width="1">
+                                    <col width="1">
+                                </colgroup>
+                                <thead style="background: #f0ebe5; border: none; height: 60px;">
+                                    <tr>
+                                        <th rowspan="1" style="width: 40%;">Tên sản phẩm</th>
+                                        <th colspan="1" style="width: 25%;">Đơn giá</th>
+                                        <th rowspan="1" style="width: 10%;">Số lượng</th>
+                                        <th colspan="1" style="width: 25%;">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td class="a-right" colspan="3">Tạm tính</td>
+                                        <td class="a-right" id="thanh_toan_tmp_cal_money" colspan="1"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style class="a-right" colspan="1">Phí vận chuyển</td>
+                                        <td style class="a-right" colspan="1">Hình thức vận chuyển</td>
+                                        <td colspan="1">
+                                            <select name="choose" id="hinh_thuc_van_chuyen"
+                                                class="choose">
+                                                <option value=1>Thường</option>
+                                                <option value=2>Nhanh</option>
+                                                <option value=3>Hỏa tốc</option>
+                                            </select>
+                                        </td>
+                                        <td colspan="1" id="phi_van_chuyen">20000 VND
+                                        </td>
+                                    </tr>
+                                    <tr class="grand-total">
+                                        <td class="a-left" colspan="3"
+                                            style="font-size: 18px; color: black;">Tổng cộng</td>
+                                        <td class="a-right" id="tong_cong">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                                <tfoot class="no-data" id="no-data">
+
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="order-confi">
+                        <button type="button" class = "order_confirm">XÁC NHẬN ĐƠN HÀNG</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </form>
+    </main>
+    <main page="analytics" class="page adminAnalytics">
+      <h1>
+        Thống kê
+      </h1>
+      <section class="overview">
+        <div>
+          <div>
+            <p class="income">Doanh thu</p>
+            <p>56343455đ</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 64C28.7 64 0 92.7 0 128L0 384c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64L64 64zM272 192l224 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-224 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zM256 304c0-8.8 7.2-16 16-16l224 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-224 0c-8.8 0-16-7.2-16-16zM164 152l0 13.9c7.5 1.2 14.6 2.9 21.1 4.7c10.7 2.8 17 13.8 14.2 24.5s-13.8 17-24.5 14.2c-11-2.9-21.6-5-31.2-5.2c-7.9-.1-16 1.8-21.5 5c-4.8 2.8-6.2 5.6-6.2 9.3c0 1.8 .1 3.5 5.3 6.7c6.3 3.8 15.5 6.7 28.3 10.5l.7 .2c11.2 3.4 25.6 7.7 37.1 15c12.9 8.1 24.3 21.3 24.6 41.6c.3 20.9-10.5 36.1-24.8 45c-7.2 4.5-15.2 7.3-23.2 9l0 13.8c0 11-9 20-20 20s-20-9-20-20l0-14.6c-10.3-2.2-20-5.5-28.2-8.4c0 0 0 0 0 0s0 0 0 0c-2.1-.7-4.1-1.4-6.1-2.1c-10.5-3.5-16.1-14.8-12.6-25.3s14.8-16.1 25.3-12.6c2.5 .8 4.9 1.7 7.2 2.4c13.6 4.6 24 8.1 35.1 8.5c8.6 .3 16.5-1.6 21.4-4.7c4.1-2.5 6-5.5 5.9-10.5c0-2.9-.8-5-5.9-8.2c-6.3-4-15.4-6.9-28-10.7l-1.7-.5c-10.9-3.3-24.6-7.4-35.6-14c-12.7-7.7-24.6-20.5-24.7-40.7c-.1-21.1 11.8-35.7 25.8-43.9c6.9-4.1 14.5-6.8 22.2-8.5l0-14c0-11 9-20 20-20s20 9 20 20z"/></svg>
+        </div>
+        <div class="order pageButtonLink" page="shipping">
+          <div>
+            <p>Đặt hàng</p>
+            <p>563</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+        </div>
+        <div class="customer pageButtonLink" page="user">
+          <div>
+            <p>Khách hàng</p>
+            <p>5634</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"/></svg>
+        </div>
+        <div class="product pageButtonLink" page="product">
+          <div>
+            <p>Sản phẩm</p>
+            <p>56</p>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 0C400 0 288 32 288 176l0 112c0 35.3 28.7 64 64 64l32 0 0 128c0 17.7 14.3 32 32 32s32-14.3 32-32l0-128 0-112 0-208c0-17.7-14.3-32-32-32zM64 16C64 7.8 57.9 1 49.7 .1S34.2 4.6 32.4 12.5L2.1 148.8C.7 155.1 0 161.5 0 167.9c0 45.9 35.1 83.6 80 87.7L80 480c0 17.7 14.3 32 32 32s32-14.3 32-32l0-224.4c44.9-4.1 80-41.8 80-87.7c0-6.4-.7-12.8-2.1-19.1L191.6 12.5c-1.8-8-9.3-13.3-17.4-12.4S160 7.8 160 16l0 134.2c0 5.4-4.4 9.8-9.8 9.8c-5.1 0-9.3-3.9-9.8-9L127.9 14.6C127.2 6.3 120.3 0 112 0s-15.2 6.3-15.9 14.6L83.7 151c-.5 5.1-4.7 9-9.8 9c-5.4 0-9.8-4.4-9.8-9.8L64 16zm48.3 152l-.3 0-.3 0 .3-.7 .3 .7z"/></svg>
+        </div>
+      </section>
+      <input type="date" style="margin-top: 2rem;" name="" id="">
+      <section class="analyticBoard">
+        <div class="row">
+          <p>Ngày</p>
+          <p>Doanh thu</p>
+        </div>
+      </section>
+    </main>
+
+    <main class="page adminUserPage" page="user">
+      <div class="top-section">
+        <h1>Quản Lý Người Dùng</h1>
+        <div>
+          <div class="adminUserSearch">
+            <div class="search-box">
+              <input type="text" placeholder="Tìm người dùng..." />
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <button class="addUser_btn">Thêm người dùng</button>
+          <div class="pop-ups">
+            <div class="add-user">
+              <form class="form-container">
+                <label class="form-label" for="added_email">Email:</label>
+                <input class="form-input" type="email" id="added_email" name="userEmail" required>
+                <label class="form-label" for="added_name">Tên:</label>
+                <input class="form-input" type="text" name="userName" id="added_name" required>
+                <label class="form-label" for="added_pwd">Mật Khẩu:</label>
+                <input class="form-input" type="password" id="added_pwd" name="userPassword" required>
+                <label class="form-label" for="added_role">Chức vụ:</label>
+                <select name="userRole" id="added_role">
+                  <option value="Admin">Admin</option>
+                  <option value="Khach hang">Khách hàng</option>
+                  <option value="Nhan vien">Nhân viên</option>
+                </select>
+                <div style="text-align: center;">
+                  <button class="btn-submit" id="add_btn" type="submit">Thêm</button>
+                  <button class="btn-close" id="close_btn" type="button">Hủy</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="adminUserBoard">
+
+        <!-- DISPLAY IN adminUserBoard.js -->
+        
+      </div>
+    </main>
+
+    <main class="page adminProductPage" page="product">
+      <div class="top-section">
+        <h1>Quản Lý Sản Phẩm</h1>
+        <div>
+          <div class="adminProductSearch">
+            <div class="search-box">
+              <input type="text" placeholder="Tìm sản phẩm..." />
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                  />
+                </svg>
+                        </a>
+                    </div>
+                </div>
+                <button class="addProduct_btn">Thêm sản phẩm</button>
+                <div class="pop-ups">
+                    <div class="add-product">
+                        <form class="form-container">
+
+                            <label class="form-label" for="added_productName">Tên sản phẩm:</label>
+                            <input class="form-input" type="text" name="productName" id="added_productName" required />
+
+                            <label class="form-label" for="added_productPrice">Giá sản phẩm:</label>
+                            <input class="form-input" type="number" name="productPrice" id="added_productPrice" required />
+
+                            <label class="form-label" for="added_productDescription">Mô tả sản phẩm:</label>
+                            <textarea class="form-input" name="productDescription" id="added_productDescription" required></textarea>
+
+                            <label class="form-label" for="added_productImage">Ảnh sản phẩm:</label>
+                            <input class="form-input" type="file" name="productImage" id="added_productImage" accept="image/jpeg, image/png, image/jpd, image/gif," />
+
+                            <label class="form-label" for="added_productCategory">Danh mục:</label>
+                            <select name="productCategory" id="added_productCategory">
+                                <option value="Lẩu">Lẩu</option>
+                                <option value="Cơm chiên">Cơm chiên</option>
+                                <option value="Tráng Miệng">Tráng Miệng</option>
+                                <option value="Bún">Bún</option>
+                                <option value="Hải sản">Hải sản</option>
+                                <option value="Bánh mì">Bánh mì</option>
+                      </select>
+
+
+                            <div style="text-align: center;">
+                                <button class="btn-submit" id="add_btn" type="submit">Thêm</button>
+                                <button class="btn-close" id="close_btn" type="button">Hủy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+          <button>Thêm sản phẩm</button>
+        </div>
+      </div>
+      <div class="adminProductBoard">
+        <div class="section">
+          <p>Sản phẩm</p>
+          <p>Loại</p>
+          <p>Giá</p>
+          <p>Sửa/Xóa</p>
+        </div>
+        <!-- <div class="product section">
+          
+          <div class="categories">
+            <div class="category">Bún bò</div>
+          </div>
+          <div class="price">
+            35.000đ
+          </div>
+          <div class="actions">
+            <div class="modify">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z"/></svg>
+              <p>Sửa</p>
+            </div>
+            <div class="remove">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                  d="M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z"
+                />
+              </svg>
+              <p>Gỡ</p>
+            </div>
+          </div>
+          <!-- <div class="pop-ups">
+            <div class="modify"></div>
+            <div class="remove"></div>
+          </div> -->
+        </div> -->
+      </div>
+    </main>
+
+    <main class="page adminOrderPage" page="shipping">
+      <div class="top-section">
+        <h1>Những đơn hàng</h1>
+          <div class="adminProductSearch">
+            <div class="search-box">
+              <input type="text" placeholder="Tìm sản phẩm..." />
+              <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+      </div>
+      <div class="adminOrderBoard">
+   
+        <!-- ADMINORDERLOGIC.JS -->
+
+      </div>
+    </main>
+
+    <nav class="admin-navbar">
+      <ul class="admin-navbar-nav">
+        <li class="logo">
+          <a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path
+                d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z"
+              />
+            </svg>
+            <span class="link-text">EatOut</span>
+          </a>
+        </li>
+
+        <!-- ADMIN NAVBAR ICON IS GENERATED IN adminSidebar.js -->
+
+      </ul>
+    </nav>
+
+    <script type="module" src="./index.js"></script>
+
+
+
+    <div class="overlay-orderHistory">
+      <img src="images/close-button-png-27.png" class="close-btn">
+      <div class="orderHistory-container">
+        <div class="container_table_history">
+          <table class="table_history">
+            <thead>
+              <tr>
+                <th>Mã số hóa đơn</th>
+                <th>Ngày mua</th>
+                <th>Địa chỉ</th>
+                <th>Tông tiền</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+
+      <div class="box-checkout-wrapper" style="display: none;">
+        <i class="fa-regular fa-rectangle-xmark tmp" style="color: black; font-size: 30px;"></i>
+        <div class="box-checkout">
+            <h3 class="box-title">XEM LẠI ĐƠN HÀNG</h3>
+            <div class="box-content" style="padding: 0;">
+                <table class="data-table">
+                    <colgroup>
+                        <col>
+                        <col width="1">
+                        <col width="1">
+                        <col width="1">
+                        <col width="1">
+                    </colgroup>
+                    <thead style="background: #f0ebe5; border: none; height: 60px;">
+                        <tr>
+                            <th rowspan="1" style="width: 40%;">Tên sản phẩm</th>
+                            <th colspan="1" style="width: 25%;">Đơn giá</th>
+                            <th rowspan="1" style="width: 10%;">Số lượng</th>
+                            <th colspan="1" style="width: 25%;">Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tfoot style="background: #f0ebe5;">
+                        <tr>
+                            <td class="a-right" colspan="3">Tạm tính</td>
+                            <td class="a-right" id="thanh_toan_tmp_cal_money_history" colspan="1"></td>
+                        </tr>
+                        <tr>
+                            <td class="a-right" colspan="1">Phí vận chuyển</td>
+                            <td class="a-right" colspan="1">Hình thức vận chuyển</td>
+                            <td colspan="1" class="vanchuyen-history">
+                               
+                            </td>
+                            <td colspan="1" id="phi_van_chuyen_history">10000 VND</td>
+                        </tr>
+                        <tr class="grand-total">
+                            <td class="a-left" colspan="3" style="font-size: 18px; color: black;">Tổng cộng</td>
+                            <td class="a-right" id="tong_cong_history"></td>
+                        </tr>
+                    </tfoot>
+                    <tfoot class="no-data-history" id="no-data" style="background-color: #f6f4f1;">
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+    </div>
+    
+  </body>
+</html>

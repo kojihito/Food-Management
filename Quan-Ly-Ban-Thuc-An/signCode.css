@@ -1,0 +1,309 @@
+.popup-box{
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    position:fixed;
+}
+
+.signup-form{
+    display: none;
+    background:white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    width: 400px;
+    text-align: left;
+    position: absolute;
+}
+
+.login-form{
+    display: flex;
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    width: 320px;
+    text-align: left;
+    position:absolute;
+}
+
+.form-label {
+    font-size: 16px;
+    color: #2d1f1f;
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.form-input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.btn-submit{
+    color: white;
+    background-color: blue;
+    font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid;
+    border-radius: 50px;
+    transition: 0.3s;
+    cursor: pointer;
+    width: 100%;
+}
+.close-form{
+    height: 5%;
+    width: 6%;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border-radius: 50%;
+    border-width: thick;
+    cursor: pointer;
+}
+.popup-box .login-form .close-form{
+    height: 7%;
+    width: 7%;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border-radius: 50%;
+    border-width: thick;
+    cursor: pointer;
+}
+
+.profile-icon{
+    display: none;
+}
+
+.sub-menu-wrap{
+    display: none;
+    position: absolute;
+    top: 87%;
+    right: -10px;
+    width: 250px;
+    z-index: 1;
+}
+
+.sub-menu{
+    background: white;
+    padding: 5px;
+    margin: 10px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    box-shadow: -3px 7px 18px #888888;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgb(205, 183, 154);
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-ops{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-ops:hover{
+    background-color:#ccc;
+    border-bottom: 1px solid;
+}
+
+.pop-up-update{
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    position:fixed;
+}
+
+.pop-up-update .update-info{
+    display: block;
+    background:white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: left;
+    width: 50vw;
+    position: absolute;
+}
+
+.pop-up-update .update-info .change-password{
+    display: flex;
+    text-align: center;
+}
+
+.pop-up-update .update-info .change-password button{
+    margin-top: 1px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    height: 43px;
+    width: 18%;
+    border-radius: 10px;
+    background-color: rgb(23, 95, 218);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.pop-up-update .update-info .yn_btn{
+    text-align: center;
+}
+
+.pop-up-update .update-info .yn_btn .sav_btn{
+    color: white;
+    background-color: blue;
+    font-size: 17px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-right: 15px;
+    border: 10px black;
+    cursor: pointer;
+    width: 10%;
+}
+
+.pop-up-update .update-info .yn_btn .deny_btn{
+    color: white;
+    background-color: rgb(166, 166, 170);
+    font-size: 17px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    border: 10px black;
+    cursor: pointer;
+    width: 10%;
+}
+
+.pop-up-update .update-info .user-avt:hover{
+    opacity: 0.5;
+}
+
+.pop-up-update .update-password{
+    display: none;
+    background:white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: left;
+    width: 27vw;
+    height: auto;
+    position: absolute;
+}
+
+.pop-up-update .update-password input{
+    margin-top: 10px;
+}
+
+.pop-up-update .update-password .yn_btn{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+.pop-up-update .update-password .yn_btn .sav_btn{
+    color: white;
+    background-color: blue;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-right: 15px;
+    border: 10px black;
+    cursor: pointer;
+    width: 50%;
+}
+
+.pop-up-update .update-password .yn_btn .deny_btn{
+    color: white;
+    background-color: rgb(166, 166, 170);
+    font-size: 17px;
+    padding: 5px 10px;
+    margin-left: 15px;
+    border: 10px black;
+    cursor: pointer;
+    width: 50%;
+}
+
+.pop-up-address{
+    position: fixed;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    opacity: 1;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    z-index: 100;
+}
+
+.pop-up-address .addAddress{
+    display: block;
+    background:white;
+    border-radius: 10px;
+    padding: 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    justify-items: center;
+    width: 50vw;
+    position: absolute;
+}
+
+.pop-up-address .addAddress input{
+    width: 45vw;
+}
+
+.pop-up-address .addAddress .yn_btn{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.pop-up-address .addAddress .yn_btn .cfm_btn{
+    color: white;
+    background-color: blue;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    border: 10px black;
+    cursor: pointer;
+    width: 20%;
+    font-weight: 500;
+}
+
+.pop-up-address .addAddress .yn_btn .deny_btn{
+    color: white;
+    background-color: rgb(166, 166, 170);
+    font-size: 17px;
+    padding: 5px 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border: 10px black;
+    cursor: pointer;
+    width: 20%;
+    font-weight: 500;
+}
