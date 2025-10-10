@@ -1,4 +1,4 @@
-# Nhóm 14 - Website bán thức ăn
+# Nhóm 14 - Website bán đồ ăn
 
 ## Thành viên nhóm
 
