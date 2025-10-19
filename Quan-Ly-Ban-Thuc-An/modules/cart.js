@@ -6,161 +6,170 @@ import { loginedUser } from "./signCode.js";
 
 export function showCart() {
     const elementCart = document.querySelector(".cart-icon");
-    if (elementCart) {
-        elementCart.addEventListener("click", function () {
-            // Xóa overlay cũ nếu có
-            const existingOverlay = document.querySelector(".overlay");
-            if (existingOverlay) {
-                existingOverlay.remove();
-            }
+    if (!elementCart) {
+        console.error("Không tìm thấy phần tử .cart-icon trong DOM");
+        return;
+    }
 
-            // Tạo overlay và giỏ hàng
-            const overlay = document.createElement("div");
-            overlay.classList.add("overlay");
+    elementCart.addEventListener("click", function () {
+        // Kiểm tra trạng thái đăng nhập
+        if (!loginedUser) {
+            alert("Vui lòng đăng nhập trước!");
+            window.location.href = '/login'; // Chuyển hướng đến trang đăng nhập
+            return;
+        }
 
-            const cartContainer = document.createElement("div");
-            cartContainer.classList.add("cart_container");
-            cartContainer.innerHTML = `
-                <div style="display: flex; width: 100%; ">
-                    <i class="fa-regular fa-rectangle-xmark" style="color: black; margin-left: auto; font-size: 24px;"></i>
+        // Xóa overlay cũ nếu có
+        const existingOverlay = document.querySelector(".overlay");
+        if (existingOverlay) {
+            existingOverlay.remove();
+        }
+
+        // Tạo overlay và giỏ hàng
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+
+        const cartContainer = document.createElement("div");
+        cartContainer.classList.add("cart_container");
+        cartContainer.innerHTML = `
+            <div style="display: flex; width: 100%; ">
+                <i class="fa-regular fa-rectangle-xmark" style="color: black; margin-left: auto; font-size: 24px;"></i>
+            </div>
+            <div>
+                <div style="width: 100%; text-align: center; font-size: 24px; margin: 12px 0; color:rgb(61, 61, 57)">Sản phẩm</div>
+                <div style="margin-right: 50px; margin-bottom: 50px;" class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Loại</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thêm vào giỏ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="listSP"></tbody>
+                    </table>
                 </div>
-                <div>
-                    <div style="width: 100%; text-align: center; font-size: 24px; margin: 12px 0; color:rgb(61, 61, 57)">Sản phẩm</div>
-                    <div style="margin-right: 50px; margin-bottom: 50px;" class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Sản phẩm</th>
-                                    <th>Loại</th>
-                                    <th>Giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Thêm vào giỏ</th>
-                                </tr>
-                            </thead>
-                            <tbody class="listSP"></tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="container_cart" style="background-color: white;">
+                <div style="width: 100%; text-align: center; font-size: 24px; margin: 12px 0; color:rgb(61, 61, 57)">
+                    <i class="fa-solid fa-cart-shopping"></i>Giỏ hàng
                 </div>
-                <div class="container_cart" style="background-color: white;">
-                    <div style="width: 100%; text-align: center; font-size: 24px; margin: 12px 0; color:rgb(61, 61, 57)">
-                        <i class="fa-solid fa-cart-shopping"></i>Giỏ hàng
-                    </div>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Số lượng</th>
-                                    <th>Thành tiền</th>
-                                    <th>Xóa</th>
-                                </tr>
-                            </thead>
-                            <tbody class="cart-body"></tbody>
-                        </table>
-                    </div>
-                    <div style="background-color: white;">
-                        <div style="width: 100%; display: flex; justify-content: space-between; margin: 10px 0;">
-                            <span>Tạm tính: </span>
-                            <span class="total_TamTinh">0 VND</span>
-                        </div>
-                        <span class="product_null">* Bạn chưa có sản phẩm để thanh toán</span>
-                        <button class="btn_ThanhToan " page="ThanhToan">Thanh toán</button>
-                        
-                    </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                                <th>Xóa</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cart-body"></tbody>
+                    </table>
                 </div>
-            `;
+                <div style="background-color: white;">
+                    <div style="width: 100%; display: flex; justify-content: space-between; margin: 10px 0;">
+                        <span>Tạm tính: </span>
+                        <span class="total_TamTinh">0 VND</span>
+                    </div>
+                    <span class="product_null">* Bạn chưa có sản phẩm để thanh toán</span>
+                    <button class="btn_ThanhToan " page="ThanhToan">Thanh toán</button>
+                </div>
+            </div>
+        `;
 
-            // Thêm overlay và cartContainer vào DOM
-            document.body.appendChild(overlay);
-            overlay.appendChild(cartContainer);
+        // Thêm overlay và cartContainer vào DOM
+        document.body.appendChild(overlay);
+        overlay.appendChild(cartContainer);
 
-            // Sự kiện đóng cửa sổ
-            const closeBtn = cartContainer.querySelector("i");
+        // Sự kiện đóng cửa sổ
+        const closeBtn = cartContainer.querySelector("i");
+        if (closeBtn) {
             closeBtn.addEventListener("click", function () {
-                document.querySelectorAll(".SoLuong1").forEach((item)=>{
+                document.querySelectorAll(".SoLuong1").forEach((item) => {
                     item.innerText = 1;
                 });
                 overlay.remove();
             });
+        }
 
-            // Hiển thị danh sách sản phẩm
-            const elementBodySP = document.querySelector(".listSP");
-            if (elementBodySP) {
-                elementBodySP.innerHTML = ``;
-                food_list.forEach((food) => {
-                    elementBodySP.innerHTML += `
-                        <tr>
-                            <td>
-                                <div class="product-info">
-                                    <img src="${food.image}" alt="ảnh sản phẩm" id="img" width="30%" height="auto"> 
-                                    <span>${food.name}</span>
-                                </div>
-                            </td>
-                            <td><span class="tag">${food.category}</span></td>
-                            <td>${food.price} VND</td>
-                            <td>
-                                <div class="container_btn">
-                                    <button class="giamSoLuong1">-</button>
-                                    <button class="soLuong1">1</button>
-                                    <button class="tangSoLuong1">+</button>
-                                </div>
-                            </td>
-                            <td>
-                                <button class="edit ThemSanPham">
-                                    <span>Thêm</span>
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
-                            </td>
-                        </tr>`;
-                });
+        // Hiển thị danh sách sản phẩm
+        const elementBodySP = document.querySelector(".listSP");
+        if (elementBodySP) {
+            elementBodySP.innerHTML = ``;
+            food_list.forEach((food) => {
+                elementBodySP.innerHTML += `
+                    <tr>
+                        <td>
+                            <div class="product-info">
+                                <img src="${food.image}" alt="ảnh sản phẩm" id="img" width="30%" height="auto"> 
+                                <span>${food.name}</span>
+                            </div>
+                        </td>
+                        <td><span class="tag">${food.category}</span></td>
+                        <td>${food.price} VND</td>
+                        <td>
+                            <div class="container_btn">
+                                <button class="giamSoLuong1">-</button>
+                                <button class="soLuong1">1</button>
+                                <button class="tangSoLuong1">+</button>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="edit ThemSanPham">
+                                <span>Thêm</span>
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </td>
+                    </tr>`;
+            });
+        }
 
-            }
+        // Khởi tạo giỏ hàng
+        updateCart();
 
-            // Khởi tạo giỏ hàng
-            updateCart();
+        // Thêm sự kiện "Thêm sản phẩm"
+        suKienThemSanPham();
 
-            // Thêm sự kiện "Thêm sản phẩm"
-            suKienThemSanPham();
+        // Nút "Thanh toán"
+        var element_btnThanhToan = document.querySelector(".btn_ThanhToan");
+        if (element_btnThanhToan && !isEmptyProduct(foods)) {
+            element_btnThanhToan.classList.add("pageButtonLink");
+        }
 
-            // Nút "Thanh toán"
-            var element_btnThanhToan= document.querySelector(".btn_ThanhToan");
-            if(!isEmptyProduct(foods)){
-                element_btnThanhToan.classList.add("pageButtonLink");
-            }
-
+        if (element_btnThanhToan) {
             element_btnThanhToan.addEventListener("click", () => {
-                if(foods.length===0){
+                if (foods.length === 0) {
                     document.querySelector(".product_null").style.display = "block";
-                }
-                else{
-                    if(loginedUser!=null){
-                        
+                } else {
+                    if (loginedUser) {
                         document.getElementById("accress_order").value = loginedUser.address;
                     }
                     document.querySelector(".product_null").style.display = "none";
-                        overlay.remove();
-                        var body_product = document.querySelector(".no-data");
-                        body_product.innerHTML = "";
-                        var total_tmp = 0;
-                        foods.forEach((item)=>{
-                            body_product.innerHTML += `
-                                <td class="bill_title" >${item.food.name}</td>
-                                <td class="bill_price" style="color: rgb(243, 124, 2);text-align: center;">${item.food.price}</td>
-                                <td class="bill_count" style="text-align: center;">${item.soluong}</td>
-                                <td class="bill_thanh_tien" style="color: rgb(243, 124, 2);text-align: right;">${item.soluong*item.food.price} VND</td>
-                            `;
-                            total_tmp += item.food.price*item.soluong;
-                        });
-                        document.getElementById("thanh_toan_tmp_cal_money").innerText = total_tmp+" VND";
+                    overlay.remove();
+                    var body_product = document.querySelector(".no-data");
+                    body_product.innerHTML = "";
+                    var total_tmp = 0;
+                    foods.forEach((item) => {
+                        body_product.innerHTML += `
+                            <td class="bill_title">${item.food.name}</td>
+                            <td class="bill_price" style="color: rgb(243, 124, 2);text-align: center;">${item.food.price}</td>
+                            <td class="bill_count" style="text-align: center;">${item.soluong}</td>
+                            <td class="bill_thanh_tien" style="color: rgb(243, 124, 2);text-align: right;">${item.soluong * item.food.price} VND</td>
+                        `;
+                        total_tmp += item.food.price * item.soluong;
+                    });
+                    document.getElementById("thanh_toan_tmp_cal_money").innerText = total_tmp + " VND";
 
-                        van_chuyen();
-                    
+                    van_chuyen();
                 }
             });
-            pageDisplay();
-        });
-    }
+        }
+        pageDisplay();
+    });
 }
 
 export function tmp(){
