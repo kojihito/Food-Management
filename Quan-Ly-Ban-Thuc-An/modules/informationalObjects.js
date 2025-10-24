@@ -215,19 +215,19 @@ export const users = getLocalStorage("users")?getLocalStorage("users"):
 [
   {
     avt: null,
-    email: 'nguyenkhanh0127@gmail.com',
-    userName: 'Khanh',
+    email: 'khachhang1@gmail.com',
+    userName: 'Khach1',
     password: '123456',
     roles: 'Khach hang',
     address: 'TP HCM',
     isBlocked: false
   },
   {
-    email: 'captianBao@gmail.com',
+    email: 'ceo@gmail.com',
     avt: 
     `https://imgs.search.brave.com/7KAKmiD31pUHujt4mXlTIeLdYzPZc3BHXZIxlbhUzCk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9kaWEtZGUtbG9z/LW11ZXJ0b3MtZGF5/LW9mLXRoZS1kZWFk/LWNlbGVicmF0aW9u/cy1mcmVlLWltYWdl/LmpwZWc_dz02MDAm/cXVhbGl0eT04MA`
     ,
-    userName: 'bảo',
+    userName: 'ceo',
     password: '123456',
     roles: 'Admin',
     address: null,
@@ -238,7 +238,7 @@ export const users = getLocalStorage("users")?getLocalStorage("users"):
     avt: 
     `https://imgs.search.brave.com/7KAKmiD31pUHujt4mXlTIeLdYzPZc3BHXZIxlbhUzCk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9kaWEtZGUtbG9z/LW11ZXJ0b3MtZGF5/LW9mLXRoZS1kZWFk/LWNlbGVicmF0aW9u/cy1mcmVlLWltYWdl/LmpwZWc_dz02MDAm/cXVhbGl0eT04MA`
     ,
-    userName: 'Bao',
+    userName: 'Admin',
     password: 'admin',
     roles: 'Admin',
     address: null,
@@ -246,8 +246,8 @@ export const users = getLocalStorage("users")?getLocalStorage("users"):
   },
   {
     avt: "../images/user pic.jpg",
-    email: 'ThanhTran1997@gmail.com',
-    userName: 'Tran',
+    email: 'khachhang2@gmail.com',
+    userName: 'Khach2',
     password: '654321',
     roles: 'Khach hang',
     address: null,
@@ -255,8 +255,8 @@ export const users = getLocalStorage("users")?getLocalStorage("users"):
   },
   {
     avt: null,
-    email: "nam@gmail.com",
-    userName: 'Hoai Nam',
+    email: "khachhang3@gmail.com",
+    userName: 'Khach 3',
     password: '123456',
     roles: 'Khach hang',
     address: null,
